@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Modal } from "@mui/material";
+import { useState } from "react";
+import "./App.css";
+import ATG from "./Components/Defaultview";
+import UserContext from "./Context";
+import CreateaccountModal from "./Modals/Createaccount";
 
 function App() {
+  const [login, setLogin] = useState(false);
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <UserContext.Provider value={login}>
+        <ATG props={setOpen} />
+        <CreateaccountModal open={open} setOpen={setOpen} />
+      </UserContext.Provider>
+    </>
   );
 }
 
