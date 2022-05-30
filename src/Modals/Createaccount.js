@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 const style = {
   position: "absolute",
@@ -29,6 +30,11 @@ const CreateaccountModal = (props) => {
       }}
     >
       <Box sx={{ ...style, width: 700 }}>
+        <CancelIcon
+          onClick={() => {
+            props.setOpen(false);
+          }}
+        />
         <div
           style={{
             display: "flex",
@@ -169,7 +175,7 @@ const CreateaccountModal = (props) => {
                   fullWidth
                   style={{
                     textTransform: "unset",
-                    borderRadius: "25px",
+                    borderRadius: "10px",
                     marginTop: "1rem",
                     backgroundColor: "white",
                     color: "black",
@@ -183,7 +189,7 @@ const CreateaccountModal = (props) => {
                   fullWidth
                   style={{
                     textTransform: "unset",
-                    borderRadius: "25px",
+                    borderRadius: "10px",
                     marginTop: "1rem",
                     backgroundColor: "white",
                     color: "black",

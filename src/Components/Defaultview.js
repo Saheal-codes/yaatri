@@ -28,7 +28,7 @@ const mainFeaturedPost = {
   imageText: "main image description",
 };
 const post1 = {
-  title: "Post title",
+  title: "The Post you've been looking for!",
   date: "Nov 11",
   description: "Some great recipes for you to try",
   image: "https://source.unsplash.com/random",
@@ -37,15 +37,29 @@ const post1 = {
 
 const featuredPosts = [
   {
-    title: "Featured post",
+    author: "Kumbhakaran",
+    type: "Article",
+    views: "1.4k",
     date: "Nov 12",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
+    description: "Jab 6 mahine baad jaga to Kumbhakaran ne kya dekha?!.",
     image: "https://source.unsplash.com/random",
     imageLabel: "Image Text",
   },
   {
-    title: "Post title",
+    author: "Moglii",
+    type: "Article",
+    views: "3k",
+    date: "Nov 12",
+    description:
+      "Jungle mein maja to ata hai lekin yar tarjan bankar vo feel nahi aati...",
+    image: "https://source.unsplash.com/random",
+    avatar: "https://",
+    imageLabel: "Image Text",
+  },
+  {
+    author: "Post title",
+    type: "Short Post",
+    views: "2k",
     date: "Nov 11",
     description:
       "This is a wider card with supporting text below as a natural lead-in to additional content.",

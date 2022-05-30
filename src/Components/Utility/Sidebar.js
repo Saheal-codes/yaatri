@@ -13,6 +13,7 @@ import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
 function Sidebar(props) {
   const { archives, description, social, title } = props;
   const [icon, setIcon] = React.useState("edit");
+  const [follow, setFollow] = React.useState([]);
 
   // generate a random avatar for the user profile image by a random api
 
@@ -80,7 +81,7 @@ function Sidebar(props) {
         </Typography>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        {archives.map((archive) => (
+        {archives.map((archive, index) => (
           <div
             style={{
               display: "flex",
@@ -98,22 +99,49 @@ function Sidebar(props) {
             >
               {archive.title}
             </Typography>
-            <Button
-              variant="outlined"
-              style={{
-                marginLeft: "auto",
-                color: "black",
-                borderRadius: "20px",
-                backgroundColor: "#edeef0",
-                textTransform: "unset",
-                height: "1rem",
-                width: "1rem",
-              }}
-            >
-              Follow
-            </Button>
+            {!follow.includes(index) ? (
+              <Button
+                variant="text"
+                style={{
+                  marginLeft: "auto",
+                  color: "black",
+                  borderRadius: "20px",
+                  backgroundColor: "#edeef0",
+                  textTransform: "unset",
+                  height: "1.2rem",
+                  width: "1.2rem",
+                }}
+                onClick={() => {
+                  setFollow((prevstate) => [...prevstate, index]);
+                }}
+              >
+                Follow
+              </Button>
+            ) : (
+              <Button
+                variant="text"
+                style={{
+                  marginLeft: "auto",
+                  color: "white",
+                  borderRadius: "20px",
+                  backgroundColor: "#000000",
+                  textTransform: "unset",
+                  height: "1.2rem",
+                  width: "5rem",
+                  transition: "all 0.2s ease-in-out",
+                }}
+                onClick={() => {
+                  setFollow((prevstate) =>
+                    prevstate.filter((follow) => follow != index)
+                  );
+                }}
+              >
+                Unfollow
+              </Button>
+            )}
           </div>
         ))}
+        <Link style={{ margin: "2rem 0rem 0rem 9rem" }}>See More...</Link>
       </div>
       <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
         Social

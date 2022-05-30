@@ -174,12 +174,12 @@ export default function PrimarySearchAppBar(props) {
           >
             <div style={{ display: "flex" }}>
               <img
-                src="/images/logo.png"
+                src="/images/yaatri.png"
                 style={{
                   margin: "auto",
                   marginLeft: "1rem",
                   height: "1.8rem",
-                  width: "10rem",
+                  width: "8rem",
                 }}
               />
             </div>
@@ -190,7 +190,7 @@ export default function PrimarySearchAppBar(props) {
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
-                placeholder="Search your favourite groups in ATG"
+                placeholder="Search your favourite groups for a new adventure"
                 inputProps={{ "aria-label": "search" }}
                 style={{ width: "100%" }}
               />

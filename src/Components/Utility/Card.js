@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
 export default function Postcard(props) {
   return (
@@ -34,7 +35,8 @@ export default function Postcard(props) {
             alt="emoji"
             style={{ height: "14px", width: "14px" }}
           />{" "}
-          Article
+          {/* Article */}
+          {props.post.type}
         </Typography>
         <div style={{ display: "flex" }}>
           <Typography
@@ -44,8 +46,9 @@ export default function Postcard(props) {
             color="black"
             style={{ margin: "0 7rem 0 0" }}
           >
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests.
+            {/* This impressive paella is a perfect party dish and a fun meal to
+            cook together with your guests. */}
+            {props.post.description}
           </Typography>
           <IconButton
             aria-label="settings"
@@ -58,35 +61,45 @@ export default function Postcard(props) {
           </IconButton>
         </div>
       </CardContent>
-      <CardActions style={{ justifyContent: "space-between" }}>
+      <CardActions
+        style={{
+          justifyContent: "flex-start",
+          fontSize: "1.2rem",
+          fontWeight: "700",
+        }}
+      >
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
               R
             </Avatar>
           }
-          style={{ fontSize: "1.1rem" }}
-          title="Martin Mathews"
+          // title="Martin Mathews"
         />
-        {/* <Typography
-          component="h3"
-          variant="h4"
-          color="inherit"
-          noWrap
-          sx={{ flex: 0.95 }}
+        <span style={{ marginRight: "10rem" }}>{props.post.author}</span>
+        <span
+          style={{ marginLeft: "auto", alignItems: "center", display: "flex" }}
         >
-        </Typography> */}
-        <IconButton
-          aria-label="share"
-          style={{
-            alignItems: "end",
-            backgroundColor: "#edeef0",
-            borderRadius: "10%",
-            marginRight: "1rem",
-          }}
-        >
-          <ShareIcon />
-        </IconButton>
+          <span style={{ margin: ".5rem .38rem 0 0" }}>
+            <VisibilityIcon size="small" />
+          </span>
+          <Typography variant="subtitle2" noWrap>
+            {props.post.views} Views
+          </Typography>
+        </span>
+        <span>
+          <IconButton
+            aria-label="share"
+            style={{
+              alignItems: "end",
+              backgroundColor: "#edeef0",
+              borderRadius: "10%",
+              marginRight: "1rem",
+            }}
+          >
+            <ShareIcon />
+          </IconButton>
+        </span>
       </CardActions>
     </Card>
   );

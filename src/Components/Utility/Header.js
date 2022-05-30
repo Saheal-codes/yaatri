@@ -63,6 +63,7 @@ function Header(props) {
               marginRight: "1em",
               backgroundColor: "#edeef0",
               fontWeight: "700",
+              paddingLeft: "1em",
             }}
           >
             Write a post
