@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import CancelIcon from "@mui/icons-material/Cancel";
+import React from "react";
 
 const style = {
   position: "absolute",
@@ -22,6 +23,36 @@ const style = {
 };
 
 const CreateaccountModal = (props) => {
+  // a state for the form
+
+  const [form, setform] = React.useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // function to handle the form input
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setform({ ...form, [name]: value });
+  };
+
+  // function to handle the form submission
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (
+      document.getElementById("password").value !==
+      document.getElementById("confirmPassword").value
+    ) {
+      return alert("Passwords do not match");
+    }
+    // send the form data to the backend
+  };
+
   return (
     <Modal
       open={props.open}
@@ -103,11 +134,11 @@ const CreateaccountModal = (props) => {
                   <TextField
                     size="small"
                     style={{ padding: "unset" }}
-                    name="firstName"
+                    name="fullName"
                     required
                     fullWidth
-                    id="firstName"
-                    label="First Name"
+                    id="fullName"
+                    label="Full Name"
                     autoFocus
                   />
                   <TextField
@@ -115,9 +146,9 @@ const CreateaccountModal = (props) => {
                     size="small"
                     required
                     fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
+                    id="username"
+                    label="Username"
+                    name="username"
                   />
                 </div>
                 <div item xs={12}>
@@ -133,6 +164,7 @@ const CreateaccountModal = (props) => {
                 </div>
                 <div item xs={12}>
                   <TextField
+                    className="password"
                     size="small"
                     required
                     style={{ padding: "unset" }}
@@ -145,6 +177,7 @@ const CreateaccountModal = (props) => {
                 </div>
                 <div item xs={12}>
                   <TextField
+                    className="confirmpassword"
                     size="small"
                     required
                     style={{ padding: "unset" }}
@@ -159,6 +192,9 @@ const CreateaccountModal = (props) => {
                   variant="contained"
                   fullWidth
                   color="primary"
+                  onClick={() => {
+                    handleChange();
+                  }}
                   style={{
                     textTransform: "unset",
                     borderRadius: "25px",

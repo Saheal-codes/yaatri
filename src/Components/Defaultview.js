@@ -102,7 +102,7 @@ const theme = createTheme({
     },
   },
 });
-export default function ATG(props) {
+export default function Yaatri(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

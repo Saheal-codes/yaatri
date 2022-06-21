@@ -1,7 +1,7 @@
 import { Modal } from "@mui/material";
 import { useState } from "react";
 import "./App.css";
-import ATG from "./Components/Defaultview";
+import Yaatri from "./Components/Defaultview";
 import UserContext from "./Context";
 import CreateaccountModal from "./Modals/Createaccount";
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <UserContext.Provider value={login}>
-        <ATG props={setOpen} />
+        <Yaatri props={setOpen} />
         <CreateaccountModal open={open} setOpen={setOpen} />
       </UserContext.Provider>
     </>
