@@ -24,7 +24,7 @@ export default function Postcard(props) {
     >
       <CardMedia
         component="img"
-        height="194"
+        height="120"
         image={props.post.image}
         alt="Paella dish"
       />
@@ -46,8 +46,6 @@ export default function Postcard(props) {
             color="black"
             style={{ margin: "0 7rem 0 0" }}
           >
-            {/* This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. */}
             {props.post.description}
           </Typography>
           <IconButton
@@ -74,7 +72,7 @@ export default function Postcard(props) {
               R
             </Avatar>
           }
-          // title="Martin Mathews"
+        // title="Martin Mathews"
         />
         <span style={{ marginRight: "10rem" }}>{props.post.author}</span>
         <span

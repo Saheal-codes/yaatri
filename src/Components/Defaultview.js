@@ -12,13 +12,14 @@ import Sidebar from "./Utility/Sidebar";
 import PrimarySearchAppBar from "./Bar";
 import Postcard from "./Utility/Card";
 import UserContext from "../Context";
+import PrimaryBar from "./PrimaryBar";
 
 const sections = [
-  { title: "All Posts(30)", url: "#" },
-  { title: "Article", url: "#" },
-  { title: "Event", url: "#" },
-  { title: "Education", url: "#" },
-  { title: "Job", url: "#" },
+  { title: "All Posts(30)", url: "#",icon:"" },
+  { title: "Articles", url: "#",icon:"" },
+  { title: "Events", url: "#",icon: ""},
+  { title: "Education", url: "#",icon:"" },
+  
 ];
 
 const mainFeaturedPost = {
@@ -73,10 +74,10 @@ const posts = [post1];
 const sidebar = {
   title: "Recommended Groups",
   archives: [
-    { title: "Leisure", url: "#" },
-    { title: "Activism", url: "#" },
-    { title: "MBA", url: "#" },
-    { title: "Philosophy", url: "#" },
+    { title: "Leisure", url: "#", link: "https://images.unsplash.com/photo-1499915174960-6f5340157928?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { title: "Activism", url: "#", link: "https://images.unsplash.com/photo-1591848478625-de43268e6fb8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { title: "Spirituality", url: "#", link: "https://plus.unsplash.com/premium_photo-1663091648564-7f3637c5c149?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8c3Bpcml0dWFsaXR5fGVufDB8fDB8fHww" },
+    { title: "Philosophy", url: "#", link: "https://images.unsplash.com/photo-1508169351866-777fc0047ac5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   ],
   social: [
     { name: "GitHub", icon: GitHubIcon },
@@ -106,34 +107,34 @@ export default function Yaatri(props) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <PrimarySearchAppBar style={{ width: "100%" }} props={props.props} />
+      <PrimaryBar props={props} />
       <MainFeaturedPost post={mainFeaturedPost} section />
-      <Container maxWidth="lg">
-        <main>
-          <Header title="Blog" sections={sections} />
-          <div style={{ display: "flex" }}>
-            <Grid
-              container
-              spacing={4}
-              width="100%+3px"
-              marginLeft={0}
-              flexWrap={"wrap-reverse"}
-              justifyContent={"space-between"}
-              flex={0.8}
-            >
-              {featuredPosts.map((post) => (
-                <Postcard key={post.title} post={post} />
-              ))}
-            </Grid>
-            <Sidebar
-              title={sidebar.title}
-              description={sidebar.description}
-              archives={sidebar.archives}
-              social={sidebar.social}
-            />
-          </div>
-        </main>
-      </Container>
+      <main className= " max-w-screen-lg mx-auto h-full">
+        <Header title="Blog" sections={sections} />
+        <div
+          className="lg:gap-48 ml:gap-36 md:gap-20 sm:gap-10 ss:gap-5 sd:flex lg:mx-36 ml:mx-24 md:mx-16 sm:mx-10 mt-16 ">
+          <Grid
+            container
+
+            spacing={4}
+            width="100%+3px"
+            marginLeft={0}
+            flexWrap={"wrap-reverse"}
+            justifyContent={"space-between"}
+            flex={0.8}
+          >
+            {featuredPosts.map((post) => (
+              <Postcard key={post.title} post={post} />
+            ))}
+          </Grid>
+          <Sidebar
+            title={sidebar.title}
+            description={sidebar.description}
+            archives={sidebar.archives}
+            social={sidebar.social}
+          />
+        </div>
+      </main>
       {/* <Footer
         title="Footer"
         description="Something here to give the footer a purpose!"

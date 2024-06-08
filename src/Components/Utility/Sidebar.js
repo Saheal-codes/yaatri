@@ -1,14 +1,13 @@
 import * as React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import EditIcon from "@mui/icons-material/Edit";
 import { Avatar, Button, TextField } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ThumbUpTwoToneIcon from "@mui/icons-material/ThumbUpTwoTone";
+import InfoIcon from '@mui/icons-material/Info';
 
 function Sidebar(props) {
   const { archives, description, social, title } = props;
@@ -28,108 +27,75 @@ function Sidebar(props) {
 
   return (
     <div
-      style={{
-        marginLeft: "auto",
-        display: "flex",
-        alignItems: "stretch",
-        flexDirection: "column",
-        flex: 0.2,
-      }}
+      className="ml-auto flex items-center flex-col flex-[.3] sticky top-[300px]"
     >
-      <Paper elevation={0}>
-        <LocationOnOutlinedIcon style={{ height: "2.5em", color: "black" }} />
-        <TextField
+      <div className="rounded-md  w-full justify-between flex items-center">
+        <LocationOnOutlinedIcon className="h-full" />
+        <input className="border-slate-300 border-2 rounded-xl p-2"
           onFocus={() => {
             setIcon("close");
           }}
           onBlur={() => {
             setIcon("edit");
           }}
-          id="standard-basic"
-          label="Enter Your Location"
-          variant="standard"
+
         />
         {icon === "close" ? (
-          <CloseIcon style={{ height: "2.5em", color: "black" }} />
+          <CloseIcon className={`h-10 text-black cursor-pointer`} 
+          // style={{ height: "2.5em", color: "black" }} 
+          />
         ) : (
-          <EditIcon style={{ height: "2.5em", color: "black" }} />
+          // <EditIcon style={{ height: "2.5em", color: "black" }} />
+          <div className="h-10 w-4 ml-2 "></div>
         )}
-      </Paper>
-      <div style={{ display: "flex", marginTop: "1.5rem" }}>
-        <InfoOutlinedIcon
-          sx={{ fontSize: 15 }}
-          style={{ marginLeft: "0.5rem" }}
-        />
-        <Typography
-          style={{
-            fontSize: "0.7rem",
-            color: "grey",
-            marginLeft: "0.2rem",
-          }}
+      </div>
+      <div className={`flex items-center  justify-between min-w-full`}>
+        <div className="pl-[2px] text-xs">
+          <InfoIcon />
+        </div>
+        <div
+          className={`max-w-[14rem] text-center text-sm pr-4 text-[.7rem] leading-[15px] mt-2`}
         >
           Your location will help us serve better and extend a personalised
           experience.
-        </Typography>
+        </div>
+        <div></div>
       </div>
-      <div style={{ display: "flex", marginTop: "2rem" }}>
+      <div className="flex items-center mt-8 justify-center mb-5 w-full ">
         <ThumbUpTwoToneIcon
-          fontSize="small"
-          style={{ marginRight: ".8rem", marginTop: "1rem" }}
+          className="mr-2 text-[1rem]"
+
         />
-        <Typography variant="subtitle1" gutterBottom sx={{ mt: 2 }}>
+        <div className="font-bold">
           RECOMMENDED GROUPS
-        </Typography>
+        </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className="max-w-full flex flex-col w-full justify-between" >
         {archives.map((archive, index) => (
           <div
-            style={{
-              display: "flex",
-              marginTop: ".5rem",
-              alignItems: "center",
-            }}
+            className="flex mt-2 items-center justify-between"
           >
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-            <Typography
-              style={{ marginLeft: "1rem" }}
-              display="block"
-              variant="body1"
+            <Avatar alt="Remy Sharp" src={archive.link} className="ml-1" />
+            <div
+              className="ml-8 block"
               href={archive.url}
               key={archive.title}
             >
               {archive.title}
-            </Typography>
+            </div>
             {!follow.includes(index) ? (
-              <Button
-                variant="text"
-                style={{
-                  marginLeft: "auto",
-                  color: "black",
-                  borderRadius: "20px",
-                  backgroundColor: "#edeef0",
-                  textTransform: "unset",
-                  height: "1.2rem",
-                  width: "1.2rem",
-                }}
+              <button
+                type="button"
+                className="ml-auto text-sm text-black bg-blue-400 rounded-xl h-5 px-2 min-w-5 max-w-[20rem] ease-in-out transition-all duration-150 hover:animate-pulse"
                 onClick={() => {
                   setFollow((prevstate) => [...prevstate, index]);
                 }}
               >
                 Follow
-              </Button>
+              </button>
             ) : (
-              <Button
-                variant="text"
-                style={{
-                  marginLeft: "auto",
-                  color: "white",
-                  borderRadius: "20px",
-                  backgroundColor: "#000000",
-                  textTransform: "unset",
-                  height: "1.2rem",
-                  width: "5rem",
-                  transition: "all 0.2s ease-in-out",
-                }}
+              <button
+                className="ml-auto text-sm text-black bg-blue-50 rounded-xl h-5 px-2 min-w-5 max-w-[20rem] ease-in-out transition-all duration-150 hover:animate-pulse "
                 onClick={() => {
                   setFollow((prevstate) =>
                     prevstate.filter((follow) => follow != index)
@@ -137,15 +103,15 @@ function Sidebar(props) {
                 }}
               >
                 Unfollow
-              </Button>
+              </button>
             )}
           </div>
         ))}
-        <Link style={{ margin: "2rem 0rem 0rem 9rem" }}>See More...</Link>
+        <div className="items-center hover:text-blue-600 cursor-pointer underline text-sky-400 ml-auto mr-auto mt-4" >See More...</div>
       </div>
-      <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
-        Social
-      </Typography>
+      <div className="text-center text-black font-semibold my-4 mx-auto text-2xl font-sans">
+        Socials
+      </div>
       {social.map((network) => (
         <Link
           display="block"

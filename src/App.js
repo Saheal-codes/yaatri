@@ -10,6 +10,13 @@ function App() {
 
   const [open, setOpen] = useState(false);
 
+  const [isNotificationOverlayVisible, setIsNotificationOverlayVisible] = useState(false);
+
+  const toggleNotificationOverlay = () => {
+    setIsNotificationOverlayVisible(prev => !prev);
+  };
+
+
   return (
     <>
       <UserContext.Provider value={login}>
