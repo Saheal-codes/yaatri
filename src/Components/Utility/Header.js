@@ -30,16 +30,15 @@ function Header(props) {
             underline="none"
           >
             {section.title}
-            <div className={`${styles.iconsSpacing}`}>
+            <div className={`${styles.iconsSpacing} grid place-items-center`}>
               {section.title === "All Posts(30)" ? <ClipboardDocumentCheckIcon className={`${styles.iconsSize}`} /> : section.title === "Articles" ? <ArticleIcon className={`${styles.iconsSize}`} /> : section.title === "Events" ? <Star className={`${styles.iconsSize}`} /> : section.title === "Education" ? <AcademicCapIcon className={`${styles.iconsSize}`} /> : ""}
             </div>
 
           </div>
         ))}
         <div
-          className={`items-center flex ml-auto lg:mr-5 justify-center pb-3 ss:pb-0`}
+          className={`items-center flex ml-auto lg:mr-5 justify-center pb-3 ss:pb-0 gap-3`}
         >
-          <Writepost {...{setWritepost, writepost}}/>
           <HeaderOptions sections={sections}/>
           <button
             onClick={()=>setWritepost((prev)=>prev=!prev)}
@@ -56,6 +55,8 @@ function Header(props) {
           </button>
         </div>
       </div>
+      <Writepost {...{setWritepost, writepost}}/>
+
     </React.Fragment>
   );
 }

@@ -44,8 +44,10 @@ export default function PrimaryBar() {
     const [profileshow, setProfileshow] = useState(false);
     const [messageshow, setMessageshow] = useState(false);
 
+    console.log({notification,profileshow,messageshow})
+
     return (
-        <Disclosure as="header" className="bg-white shadow sticky top-0 z-10">
+        <Disclosure as="header" className="bg-white shadow sticky top-0 z-20">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-full px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
@@ -90,12 +92,12 @@ export default function PrimaryBar() {
                                     )}
                                 </DisclosureButton>
                             </div>
-                            <div className="hidden lg:relative lg:z-10 lg:ml-4 md:flex lg:items-center">
+                            <div className="hidden md:relative md:z-30 md:ml-4 md:flex md:items-center">
                                 {<Notification {...{ notification, setNotification, profileshow, setProfileshow, setMessageshow }}
                                     className={`${notification ? '' : "hidden"} relative flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
                                 />}
-                                <Profile {...{ profileshow, setProfileshow, setNotification }} />
-                                <Messagebox {...{messageshow, setMessageshow, profileshow, setNotification}} />
+                                {!messageshow && <Profile {...{ profileshow, setProfileshow, setNotification }} />}
+                                <Messagebox {...{messageshow, setMessageshow, profileshow, setNotification,setProfileshow}} />
                                 <span className="sr-only">View notifications</span>
                                 <button
                                     onClick={() => setNotification(true)}
@@ -120,7 +122,7 @@ export default function PrimaryBar() {
                                         leaveFrom="transform opacity-100 scale-100"
                                         leaveTo="transform opacity-0 scale-95"
                                     >
-                                        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                        <MenuItems className="absolute top-10 right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                             {userNavigation.map((item) => (
                                                 <MenuItem key={item.name}>
                                                     {({ focus }) => (
@@ -142,8 +144,8 @@ export default function PrimaryBar() {
                             </div>
                         </div>
                     </div>
-                    <DisclosurePanel as="nav" className="md:hidden" aria-label="Global">
-                        <div className="space-y-1 px-2 pb-3 pt-2 z-20">
+                    <DisclosurePanel as="nav" className="md:hidden z-20 bg-white" aria-label="Global">
+                        <div className="space-y-1 px-2 pb-3 pt-2">
                             {navigation.map((item) => (
                                 <DisclosureButton
                                     key={item.name}

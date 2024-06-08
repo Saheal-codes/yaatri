@@ -9,10 +9,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Header from "./Utility/Header";
 import MainFeaturedPost from "./Utility/MainFeaturedPost";
 import Sidebar from "./Utility/Sidebar";
-import PrimarySearchAppBar from "./Bar";
 import Postcard from "./Utility/Card";
-import UserContext from "../Context";
 import PrimaryBar from "./PrimaryBar";
+import PrimarySearchAppBar from "./Bar";
+import UserContext from "../Context";
 
 const sections = [
   { title: "All Posts(30)", url: "#",icon:"" },
@@ -109,7 +109,7 @@ export default function Yaatri(props) {
       <CssBaseline />
       <PrimaryBar props={props} />
       <MainFeaturedPost post={mainFeaturedPost} section />
-      <main className= " max-w-screen-lg mx-auto h-full">
+      <main className= "  mx-auto h-full">
         <Header title="Blog" sections={sections} />
         <div
           className="lg:gap-48 ml:gap-36 md:gap-20 sm:gap-10 ss:gap-5 sd:flex lg:mx-36 ml:mx-24 md:mx-16 sm:mx-10 mt-16 ">
@@ -117,7 +117,7 @@ export default function Yaatri(props) {
             container
 
             spacing={4}
-            width="100%+3px"
+            width="100%"
             marginLeft={0}
             flexWrap={"wrap-reverse"}
             justifyContent={"space-between"}

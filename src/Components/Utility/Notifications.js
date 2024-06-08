@@ -84,7 +84,7 @@ export default function Notification({ notification, setNotification, profilesho
 
   return (
     <Transition show={notification}>
-      <Dialog className="relative z-10" onClose={setNotification}>
+      <Dialog className="relative z-20" onClose={setNotification}>
         <div className="fixed inset-0" />
 
         <div className="fixed inset-0 overflow-hidden">
@@ -196,8 +196,9 @@ export default function Notification({ notification, setNotification, profilesho
                                                       'block px-4 py-2 text-sm cursor-pointer'
                                                     )}
                                                     onClick={()=>{
-                                                      setMessageshow((prev)=>prev=!prev)
+                                                      setMessageshow((prev)=>!prev)
                                                       setProfileshow(person)
+                                                      setNotification(false)
                                                     }}
                                                   >
                                                     Send message

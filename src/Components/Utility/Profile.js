@@ -19,7 +19,7 @@ export default function Profile({ profileshow, setProfileshow, setNotification, 
 
   return (
     <Transition show={!!profileshow}>
-      <Dialog className="relative z-10" onClose={setProfileshow}>
+      <Dialog className="relative z-20" onClose={setProfileshow}>
         <div className="fixed inset-0" />
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">

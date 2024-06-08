@@ -15,10 +15,10 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Messagebox({ messageshow, setMessageshow, profileshow, setNotification }) {
+export default function Messagebox({ messageshow, setMessageshow, profileshow, setNotification,setProfileshow }) {
     return (
         <Transition show={!!messageshow}>
-            <Dialog className="relative z-10" onClose={setMessageshow}>
+            <Dialog className="relative z-20" onClose={setMessageshow}>
                 <div className="fixed inset-0" />
 
                 <div className="fixed inset-0 overflow-hidden">
@@ -40,6 +40,7 @@ export default function Messagebox({ messageshow, setMessageshow, profileshow, s
                                                     <ChevronDownIcon className="h-7 w-7 mt-[6px] rotate-90 cursor-pointer hover:bg-slate-200 rounded-md duration-300" aria-hidden="true" onClick={() => {
                                                         setMessageshow(false)
                                                         setNotification(true)
+                                                        setProfileshow(false)
                                                     }} />
                                                 </div>
                                                 <div>
